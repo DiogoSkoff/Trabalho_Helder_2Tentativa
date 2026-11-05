@@ -1,0 +1,64 @@
+/* ==========================================================
+   home.css – Página inicial: banner, categorias e benefícios
+   ========================================================== */
+
+/* ---------- 5. Home ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 24px;
+  padding: clamp(24px, 4vw, 48px);
+  margin-top: 24px;
+  border-radius: var(--r-panel);
+  color: #fff;
+  background: linear-gradient(120deg, #1a3a8f, #2f63d0 55%, #5b8def);
+  overflow: hidden;
+}
+:root[data-theme="dark"] .hero { background: linear-gradient(120deg, #0f1f52, #1f3f8f 60%, #3560c4); }
+.hero .tag { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; }
+.hero h1 {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+.hero p { max-width: 440px; margin: 14px 0 22px; opacity: 0.92; }
+.hero .btn-primary { background: #fff; color: #1a3a8f; box-shadow: none; }
+.hero-imgs { display: flex; justify-content: center; gap: 12px; }
+.hero-imgs img { width: 46%; border-radius: var(--r-card); box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25); }
+.hero-imgs img:nth-child(2) { transform: translateY(18px); }
+
+.secao { margin-top: 40px; }
+.secao-topo { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.secao-topo a { color: var(--link); font-size: 12.5px; }
+
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 190px), 1fr)); gap: 16px; }
+.cat-tile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  text-decoration: none;
+  background: var(--surface);
+  border: 0.83px solid var(--line);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+}
+.cat-tile:hover { border-color: var(--primary); }
+.cat-tile img { width: 52px; height: 40px; object-fit: cover; border-radius: 8px; flex: none; }
+.cat-tile span { display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; }
+.cat-tile b { font-size: 13px; }
+.cat-tile small { color: var(--muted); font-size: 11.5px; }
+
+.beneficios { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; }
+.beneficio {
+  padding: 18px;
+  background: var(--soft);
+  border: 0.83px solid var(--line);
+  border-radius: var(--r-card);
+}
+.beneficio b { display: block; margin-bottom: 4px; font-family: var(--font-display); font-size: 19px; }
+.beneficio span { color: var(--muted); font-size: 12.5px; }

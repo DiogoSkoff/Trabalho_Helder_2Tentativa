@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Produtos – Azura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/produtos.css">
+  <link rel="stylesheet" href="css/produto.css">
+  <link rel="stylesheet" href="css/carrinho.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <link rel="stylesheet" href="css/responsivo.css">
+  <script src="js/tema.js"></script>
+</head>
+<body>
+  <div id="cabecalho"></div>
+
+  <main class="wrap pagina">
+    <div class="listagem">
+      <details class="filtros-box" id="filtrosBox">
+        <summary>Filtros</summary>
+        <form class="panel" id="filtros" aria-label="Filtros de produtos"></form>
+      </details>
+
+      <section class="resultados" aria-live="polite">
+        <div class="resumo">
+          <div class="linha">
+            <div class="crumbs" id="crumbs"></div>
+            <div class="ordenar">
+              <select id="ordem" aria-label="Ordenar resultados">
+                <option value="relevancia">Mais relevantes</option>
+                <option value="menor">Menor preço</option>
+                <option value="maior">Maior preço</option>
+                <option value="nota">Melhor avaliação</option>
+              </select>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+            </div>
+          </div>
+          <div class="linha">
+            <div class="chips"><span class="contagem" id="contagem"></span><span class="chips" id="chips"></span></div>
+            <h1 class="titulo" id="titulo">Produtos</h1>
+          </div>
+        </div>
+        <div id="lista"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="rodape"></div>
+
+  <script src="js/dados.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/produtos.js"></script>
+</body>
+</html>

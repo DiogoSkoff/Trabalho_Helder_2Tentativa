@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finalizar compra – Azura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/produtos.css">
+  <link rel="stylesheet" href="css/produto.css">
+  <link rel="stylesheet" href="css/carrinho.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <link rel="stylesheet" href="css/responsivo.css">
+  <script src="js/tema.js"></script>
+</head>
+<body>
+  <div id="cabecalho"></div>
+
+  <main class="wrap pagina">
+    <h1 class="titulo">Finalizar compra</h1>
+
+    <div class="vazio" id="checkoutVazio" hidden style="margin-top:16px">
+      <h2>Seu carrinho está vazio</h2>
+      <p>Adicione produtos ao carrinho antes de finalizar a compra.</p>
+      <a class="btn-primary" href="produtos.html">Ver produtos</a>
+    </div>
+
+    <div class="checkout-layout" id="checkoutLayout">
+      <form class="checkout-form" id="formCheckout" novalidate>
+        <p class="aviso-simulacao">Simulação acadêmica: nenhum pagamento é real. Use apenas dados fictícios, nunca informações verdadeiras de cartão ou documentos.</p>
+
+        <section class="panel etapa" aria-labelledby="t-dados">
+          <h2 class="etapa-titulo" id="t-dados">1. Seus dados</h2>
+          <div class="campos">
+            <div class="campo largo">
+              <label for="nome">Nome completo</label>
+              <input id="nome" name="nome" type="text" autocomplete="name">
+              <small class="erro" id="erro-nome"></small>
+            </div>
+            <div class="campo">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email">
+              <small class="erro" id="erro-email"></small>
+            </div>
+            <div class="campo">
+              <label for="telefone">Telefone</label>
+              <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 90000-0000">
+              <small class="erro" id="erro-telefone"></small>
+            </div>
+            <div class="campo">
+              <label for="cpf">CPF</label>
+              <input id="cpf" name="cpf" type="text" inputmode="numeric" placeholder="000.000.000-00">
+              <small class="erro" id="erro-cpf"></small>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel etapa" aria-labelledby="t-entrega">
+          <h2 class="etapa-titulo" id="t-entrega">2. Entrega</h2>
+          <div class="campos">
+            <div class="campo">
+              <label for="cep">CEP</label>
+              <input id="cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000">
+              <small class="erro" id="erro-cep"></small>
+            </div>
+            <div class="campo largo">
+              <label for="endereco">Endereço</label>
+              <input id="endereco" name="endereco" type="text" autocomplete="address-line1">
+              <small class="erro" id="erro-endereco"></small>
+            </div>
+            <div class="campo">
+              <label for="numero">Número</label>
+              <input id="numero" name="numero" type="text" inputmode="numeric">
+              <small class="erro" id="erro-numero"></small>
+            </div>
+            <div class="campo">
+              <label for="complemento">Complemento <span class="muted">(opcional)</span></label>
+              <input id="complemento" name="complemento" type="text">
+            </div>
+            <div class="campo">
+              <label for="bairro">Bairro</label>
+              <input id="bairro" name="bairro" type="text">
+              <small class="erro" id="erro-bairro"></small>
+            </div>
+            <div class="campo">
+              <label for="cidade">Cidade</label>
+              <input id="cidade" name="cidade" type="text" autocomplete="address-level2">
+              <small class="erro" id="erro-cidade"></small>
+            </div>
+            <div class="campo">
+              <label for="uf">Estado</label>
+              <select id="uf" name="uf"><option value="">Selecione</option></select>
+              <small class="erro" id="erro-uf"></small>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel etapa" aria-labelledby="t-pagamento">
+          <h2 class="etapa-titulo" id="t-pagamento">3. Forma de pagamento</h2>
+          <div class="opcoes-pagamento" role="radiogroup" aria-labelledby="t-pagamento">
+            <label class="pagamento-opcao"><input type="radio" name="pagamento" value="credito" checked><b>Cartão de crédito</b><small>Até 12x</small></label>
+            <label class="pagamento-opcao"><input type="radio" name="pagamento" value="debito"><b>Cartão de débito</b><small>À vista</small></label>
+            <label class="pagamento-opcao"><input type="radio" name="pagamento" value="pix"><b>PIX</b><small>5% de desconto</small></label>
+          </div>
+
+          <div class="painel-pagamento" id="painelCartao">
+            <div class="campos">
+              <div class="campo largo">
+                <label for="cartaoNumero">Número do cartão</label>
+                <input id="cartaoNumero" name="cartaoNumero" type="text" inputmode="numeric" autocomplete="off" placeholder="0000 0000 0000 0000">
+                <small class="ajuda">Exemplo fictício: 4111 1111 1111 1111</small>
+                <small class="erro" id="erro-cartaoNumero"></small>
+              </div>
+              <div class="campo largo">
+                <label for="cartaoNome">Nome impresso no cartão</label>
+                <input id="cartaoNome" name="cartaoNome" type="text" autocomplete="off">
+                <small class="erro" id="erro-cartaoNome"></small>
+              </div>
+              <div class="campo">
+                <label for="cartaoValidade">Validade</label>
+                <input id="cartaoValidade" name="cartaoValidade" type="text" inputmode="numeric" autocomplete="off" placeholder="MM/AA">
+                <small class="erro" id="erro-cartaoValidade"></small>
+              </div>
+              <div class="campo">
+                <label for="cartaoCvv">CVV</label>
+                <input id="cartaoCvv" name="cartaoCvv" type="text" inputmode="numeric" autocomplete="off" placeholder="123">
+                <small class="erro" id="erro-cartaoCvv"></small>
+              </div>
+              <div class="campo largo" id="blocoParcelas">
+                <label for="parcelas">Parcelamento</label>
+                <select id="parcelas" name="parcelas"></select>
+                <small class="ajuda">Até 6x sem juros. De 7x a 12x com juros de 1,99% ao mês.</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="painel-pagamento" id="painelPix" hidden>
+            <p class="aviso-simulacao">Este QR Code e este código são apenas ilustrativos e não geram cobrança.</p>
+            <div class="pix">
+              <div id="pixQr" role="img" aria-label="QR Code PIX de exemplo"></div>
+              <div class="acoes">
+                <div><b>Valor no PIX:</b> <span id="pixValor"></span></div>
+                <code id="pixCodigo"></code>
+                <button class="btn-ghost" type="button" id="copiarPix">Copiar código PIX</button>
+                <small class="ajuda">Depois de “pagar”, clique em Confirmar pedido.</small>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+
+      <aside class="panel resumo-compra" aria-label="Resumo do pedido">
+        <h2>Resumo do pedido</h2>
+        <ul class="resumo-itens" id="resumoItens"></ul>
+        <div id="resumoValores" style="display:flex;flex-direction:column;gap:12px"></div>
+        <p class="msg muted" id="resumoPagamento" style="margin:0"></p>
+        <button class="btn-primary full" type="submit" form="formCheckout" id="btnConfirmar">Confirmar pedido</button>
+        <a class="btn-ghost full" href="carrinho.html">Voltar ao carrinho</a>
+      </aside>
+    </div>
+  </main>
+
+  <div id="rodape"></div>
+
+  <script src="js/dados.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

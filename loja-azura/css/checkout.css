@@ -1,0 +1,47 @@
+/* ==========================================================
+   checkout.css – Checkout, pagamento e confirmação do pedido
+   ========================================================== */
+
+/* ---------- 9. Checkout ---------- */
+.checkout-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; align-items: start; margin-top: 16px; }
+.checkout-form { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.etapa { margin: 0; min-width: 0; }
+.etapa > legend { float: left; width: 100%; margin-bottom: 14px; padding: 0; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
+.etapa > legend + * { clear: both; }
+.campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px; }
+.campos .largo { grid-column: 1 / -1; }
+.opcoes-pagamento { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 12px; margin-bottom: 16px; }
+.pagamento-opcao { position: relative; display: flex; flex-direction: column; gap: 2px; padding: 14px 14px 14px 40px; cursor: pointer; background: var(--surface); border: 0.83px solid var(--line); border-radius: var(--r-ctrl); }
+.pagamento-opcao input { appearance: none; -webkit-appearance: none; position: absolute; left: 14px; top: 17px; width: 14px; height: 14px; margin: 0; background: var(--ctrl-bg); border: 0.83px solid var(--ctrl-line); border-radius: 999px; display: grid; place-items: center; }
+.pagamento-opcao input:checked { border-color: var(--primary); }
+.pagamento-opcao input:checked::after { content: ""; width: 7px; height: 7px; border-radius: 999px; background: var(--primary); }
+.pagamento-opcao:has(input:checked) { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary); }
+.pagamento-opcao b { font-size: 13.5px; }
+.pagamento-opcao small { color: var(--muted); font-size: 11.5px; }
+.painel-pagamento { padding: 16px; background: var(--soft); border: 0.83px solid var(--line); border-radius: var(--r-ctrl); }
+.aviso-simulacao { margin: 0 0 14px; padding: 10px 12px; font-size: 12px; color: var(--muted); background: var(--surface); border: 0.83px dashed var(--line); border-radius: var(--r-ctrl); }
+.pix { display: grid; grid-template-columns: 168px minmax(0, 1fr); gap: 18px; align-items: center; }
+.pix svg { width: 168px; height: 168px; padding: 8px; background: #fff; border-radius: 8px; }
+.pix code { display: block; padding: 10px; overflow-wrap: anywhere; font-size: 11.5px; background: var(--surface); border: 0.83px solid var(--line); border-radius: 8px; }
+.pix .acoes { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.resumo-item { display: flex; gap: 10px; align-items: center; font-size: 12.5px; }
+.resumo-item img { width: 48px; height: 36px; object-fit: cover; border-radius: 6px; flex: none; }
+.resumo-item span:first-of-type { flex: 1; min-width: 0; }
+.resumo-itens { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0 0 12px; list-style: none; border-bottom: 0.83px solid var(--line); }
+
+/* ---------- 10. Confirmação ---------- */
+.sucesso { max-width: 720px; margin: 24px auto 0; text-align: center; }
+.sucesso .selo { display: grid; place-items: center; width: 64px; height: 64px; margin: 0 auto 16px; color: #fff; font-size: 30px; background: var(--ok); border-radius: 999px; }
+.sucesso .numero { display: inline-block; margin: 12px 0 24px; padding: 6px 14px; font-weight: 600; letter-spacing: 0.06em; background: var(--soft); border: 0.83px solid var(--line); border-radius: 999px; }
+.sucesso .detalhes { text-align: left; }
+.sucesso dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin: 0; }
+.sucesso dt { color: var(--muted); }
+.sucesso dd { margin: 0; overflow-wrap: anywhere; }
+.sucesso .botoes { justify-content: center; margin-top: 24px; }
+.sucesso .botoes > * { flex: 0 1 auto; }
+
+/* ---------- Títulos das etapas do checkout ---------- */
+.etapa-titulo { font-family: var(--font-display); font-size: 22px; font-weight: 600; margin: 0; }
+.etapa { gap: 14px; }
+.campo .erro:empty { display: none; }
+.painel-pagamento[hidden], .campo[hidden] { display: none; }

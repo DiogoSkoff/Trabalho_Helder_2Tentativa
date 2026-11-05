@@ -1,0 +1,166 @@
+/* ==========================================================
+   produtos.css – Cartões de produto, listagem e filtros
+   ========================================================== */
+
+/* ---------- 6. Cartões e listagem ---------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 220px)); gap: 16px; justify-content: start; }
+.grid.fluida { grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); }
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 0.83px solid var(--line);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+}
+.card:hover { border-color: var(--primary); }
+.card-link { display: flex; flex-direction: column; flex: 1; text-decoration: none; }
+.photo { background: var(--soft); }
+.photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.fav {
+  position: absolute;
+  top: 9px; right: 9px;
+  z-index: 1;
+  width: 28px; height: 28px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+  background: var(--fav-bg);
+  border: 0.83px solid var(--line);
+  border-radius: 14px;
+}
+.fav[aria-pressed="true"] { color: var(--primary); }
+.info { display: flex; flex-direction: column; gap: 5px; padding: 12px 12px 8px; flex: 1; }
+.name { font-size: 12.5px; font-weight: 400; line-height: 1.4; }
+.rate { color: var(--link); font-size: 11.5px; }
+.price-line { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
+.price { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.old { color: var(--muted); font-size: 11.5px; }
+.off { color: var(--ok); font-size: 11.5px; font-weight: 600; }
+.parcelas { color: var(--muted); font-size: 11.5px; }
+.ship { color: var(--muted); font-size: 11.5px; }
+.ship.free { color: var(--ok); }
+.card-actions { padding: 0 12px 12px; }
+
+.listagem { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; align-items: start; }
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background: var(--surface);
+  border: 0.83px solid var(--line);
+  border-radius: var(--r-panel);
+  box-shadow: var(--shadow-card);
+}
+.group { display: flex; flex-direction: column; gap: 10px; min-width: 0; margin: 0; padding: 0; border: 0; }
+.group legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+}
+.group legend + * { clear: both; }
+.opt { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 12.5px; cursor: pointer; }
+.opt input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 14px; height: 14px;
+  margin: 0;
+  background: var(--ctrl-bg);
+  border: 0.83px solid var(--ctrl-line);
+  border-radius: 3px;
+}
+.opt input[type="radio"] { border-radius: 999px; }
+.opt input[type="radio"]:checked { border-color: var(--primary); }
+.opt input[type="radio"]:checked::after { content: ""; width: 7px; height: 7px; border-radius: 999px; background: var(--primary); }
+.opt input[type="checkbox"]:checked { background: var(--primary); border-color: var(--primary); }
+.opt input[type="checkbox"]:checked::after {
+  content: "";
+  width: 4px; height: 8px;
+  border: solid #fff;
+  border-width: 0 1.6px 1.6px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+.opt:has(input:checked) { color: var(--fg); }
+
+.resultados { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.linha { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.resumo { display: flex; flex-direction: column; gap: 12px; }
+.crumbs { color: var(--muted); font-size: 11.5px; }
+.ordenar { position: relative; width: 160px; height: 36px; flex: none; }
+.ordenar select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%; height: 100%;
+  padding: 0 32px 0 12px;
+  font-size: 13px;
+  background: var(--surface);
+  border: 0.83px solid var(--line);
+  border-radius: 8px;
+}
+.ordenar svg { position: absolute; right: 12px; top: 10px; width: 16px; height: 16px; pointer-events: none; }
+.contagem { color: var(--muted); font-size: 11.5px; }
+.chips { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-width: 0; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 9px;
+  color: var(--link);
+  font-size: 11.5px;
+  background: var(--surface);
+  border: 0.83px solid var(--line);
+  border-radius: 999px;
+}
+.chip button { padding: 0 2px; border: 0; background: none; color: var(--muted); font-size: 14px; line-height: 1; }
+.chip button:hover { color: var(--fg); }
+
+.vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 64px 24px;
+  text-align: center;
+  background: var(--surface);
+  border: 0.83px solid var(--line);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+}
+.vazio h2 { font-family: var(--font-display); font-size: 26px; font-weight: 600; text-wrap: balance; }
+.vazio p { max-width: 420px; margin: 0; color: var(--muted); text-wrap: balance; }
+
+/* ---------- Filtros recolhíveis (celular) ---------- */
+.filtros-box > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 16px;
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+  background: var(--surface);
+  border: 0.83px solid var(--line);
+  border-radius: var(--r-ctrl);
+}
+.filtros-box > summary::-webkit-details-marker { display: none; }
+.filtros-box > summary::after { content: "▾"; color: var(--muted); }
+.filtros-box[open] > summary::after { content: "▴"; }
+.filtros-box[open] > summary { margin-bottom: 12px; }
+@media (min-width: 861px) {
+  .filtros-box > summary { display: none; }
+  .filtros-box[open] > summary { margin: 0; }
+}
