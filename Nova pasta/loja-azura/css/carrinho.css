@@ -1,0 +1,34 @@
+/* ==========================================================
+   carrinho.css – Carrinho de compras
+   ========================================================== */
+
+/* ---------- 8. Carrinho ---------- */
+.carrinho-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; align-items: start; margin-top: 16px; }
+.lista-carrinho { margin: 0; padding: 0; list-style: none; background: var(--surface); border: 0.83px solid var(--line); border-radius: var(--r-panel); box-shadow: var(--shadow-card); }
+.item-carrinho {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+}
+.item-carrinho + .item-carrinho { border-top: 0.83px solid var(--line); }
+.item-carrinho img { width: 96px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
+.item-carrinho .name { font-size: 13.5px; text-decoration: none; }
+.item-carrinho .sub { color: var(--muted); font-size: 12px; }
+.item-fim { text-align: right; }
+.item-total { min-width: 96px; text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.btn-remover { display: block; margin: 6px 0 0 auto; border: 0; background: none; color: var(--danger); font-size: 12px; text-decoration: underline; }
+.resumo-compra { position: sticky; top: 16px; display: flex; flex-direction: column; gap: 12px; }
+.resumo-compra h2, .resumo-compra h3 { font-family: var(--font-display); font-size: 22px; font-weight: 600; }
+.linha-valor { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
+.linha-valor.desc { color: var(--ok); }
+.linha-valor.total { padding-top: 12px; border-top: 0.83px solid var(--line); font-size: 18px; font-weight: 600; }
+.cupom { display: flex; gap: 8px; }
+.cupom input { flex: 1; min-width: 0; height: 40px; padding: 0 12px; background: var(--surface); border: 0.83px solid var(--line); border-radius: var(--r-ctrl); text-transform: uppercase; }
+.cupom button { height: 40px; padding: 0 14px; font-weight: 600; background: var(--surface); border: 0.83px solid var(--ghost-line); border-radius: var(--r-ctrl); }
+.msg { margin: 0; font-size: 12px; }
+.msg.ok { color: var(--ok); }
+.msg.erro { color: var(--danger); }
+.barra-frete { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.barra-frete span { display: block; height: 100%; background: var(--ok); border-radius: 999px; }
