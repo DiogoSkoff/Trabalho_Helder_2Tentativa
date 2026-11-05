@@ -1,8 +1,3 @@
-/* ==========================================================
-   dados.js – catálogo da loja (categorias e produtos)
-   Todos os produtos e marcas são fictícios.
-   ========================================================== */
-
 const CATEGORIAS = [
   { id: "notebooks", nome: "Notebooks" },
   { id: "smartphones", nome: "Smartphones" },
@@ -12,7 +7,6 @@ const CATEGORIAS = [
   { id: "armazenamento", nome: "Armazenamento" }
 ];
 
-/* precoAntigo preenchido = produto em oferta */
 const PRODUTOS = [
   {
     id: 1, categoria: "notebooks", marca: "Vector",
@@ -144,17 +138,39 @@ const PRODUTOS = [
   }
 ];
 
-/* ----------------------------------------------------------
-   Fotos dos produtos
-   O site procura primeiro a foto em .jpg (ex.: images/notebook-vector-15.jpg).
-   Se o arquivo não existir, usa o desenho .svg que já está na pasta.
-   Para usar uma foto real, é só salvar o .jpg na pasta images com o mesmo nome.
-   ---------------------------------------------------------- */
-PRODUTOS.forEach(function (p) { p.imagem = p.imagem.replace(/\.svg$/, ".jpg"); });
+const COMMONS = "https://commons.wikimedia.org/wiki/Special:FilePath/";
+
+const FOTOS = {
+  1: "Laptop_PC.jpg",
+  2: "A_laptop_as_a_computer_machine.jpg",
+  3: "Laptop_4.jpg",
+  4: "Laptop_on_a_desk.jpg",
+  5: "Android_Smartphone.jpg",
+  6: "Samsung_Galaxy_Android_Smartphone.jpg",
+  7: "Samsung_Galaxy_Z_smartphone.jpg",
+  8: "Computer_monitor.jpg",
+  9: "Monitor_LCD.jpg",
+  10: "Computer_Keyboard_1_2018-06-16.jpg",
+  11: "A_black_wireless_computer_mouse.jpg",
+  12: "Communication_Headset.jpg",
+  13: "ATI_Radeon_HD_4890_Graphics_Card.jpg",
+  14: "RAM_Module_(SDRAM-DDR4).jpg",
+  15: "Samsung_980_PRO_PCIe_4.0_NVMe_SSD_1TB-top_PNr%C2%B00915.jpg",
+  16: "Toshiba_1_TB_External_USB_Hard_Drive.jpg"
+};
+
+
+const IMAGEM_RESERVA = {};
+
+PRODUTOS.forEach(function (p) {
+  const foto = COMMONS + FOTOS[p.id] + "?width=600";
+  IMAGEM_RESERVA[foto] = p.imagem;   
+  p.imagem = foto;
+});
 
 document.addEventListener("error", function (e) {
   const img = e.target;
-  if (img && img.tagName === "IMG" && /\.jpg$/.test(img.src)) {
-    img.src = img.src.replace(/\.jpg$/, ".svg");
-  }
+  if (!img || img.tagName !== "IMG") return;
+  const reserva = IMAGEM_RESERVA[img.getAttribute("src")];
+  if (reserva) img.src = reserva;
 }, true);
