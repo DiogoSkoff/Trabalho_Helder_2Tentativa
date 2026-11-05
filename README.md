@@ -6,15 +6,11 @@ Azura é uma loja fictícia de tecnologia: notebooks, smartphones, monitores, pe
 Feita somente com **HTML, CSS e JavaScript puro**, sem frameworks, e versionada com **Git**.
 
 ## Como executar
-Abra o arquivo `index.html` no navegador. Não precisa instalar nada.
-
-Também funciona com um servidor local:
+Clique no botao ali do lado de githubpages que voce sera direcionado diretamente para o site ou copie o link aqui em baixo
 
 ```
-python3 -m http.server 8000
+https://diogoskoff.github.io/Trabalho_Helder_2Tentativa/loja-azura/index.html
 ```
-
-Depois acesse http://localhost:8000
 
 ## Funcionalidades
 - **Página inicial** com banner, categorias, ofertas da semana e produtos mais bem avaliados
