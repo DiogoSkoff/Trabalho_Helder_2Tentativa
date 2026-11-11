@@ -1,8 +1,3 @@
-/* ==========================================================
-   base.css – Variáveis (cores e fontes), tema escuro, base da página e layout
-   ========================================================== */
-
-/* ---------- 1. Variáveis ---------- */
 :root {
   --bg: #f5f7fc;
   --surface: #ffffff;
@@ -53,7 +48,6 @@
   color-scheme: dark;
 }
 
-/* ---------- 2. Base e layout ---------- */
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; }
