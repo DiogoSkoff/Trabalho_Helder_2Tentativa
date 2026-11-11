@@ -1,8 +1,3 @@
-/* ==========================================================
-   checkout.css – Checkout, pagamento e confirmação do pedido
-   ========================================================== */
-
-/* ---------- 9. Checkout ---------- */
 .checkout-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; align-items: start; margin-top: 16px; }
 .checkout-form { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .etapa { margin: 0; min-width: 0; }
@@ -29,7 +24,6 @@
 .resumo-item span:first-of-type { flex: 1; min-width: 0; }
 .resumo-itens { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0 0 12px; list-style: none; border-bottom: 0.83px solid var(--line); }
 
-/* ---------- 10. Confirmação ---------- */
 .sucesso { max-width: 720px; margin: 24px auto 0; text-align: center; }
 .sucesso .selo { display: grid; place-items: center; width: 64px; height: 64px; margin: 0 auto 16px; color: #fff; font-size: 30px; background: var(--ok); border-radius: 999px; }
 .sucesso .numero { display: inline-block; margin: 12px 0 24px; padding: 6px 14px; font-weight: 600; letter-spacing: 0.06em; background: var(--soft); border: 0.83px solid var(--line); border-radius: 999px; }
@@ -40,7 +34,6 @@
 .sucesso .botoes { justify-content: center; margin-top: 24px; }
 .sucesso .botoes > * { flex: 0 1 auto; }
 
-/* ---------- Títulos das etapas do checkout ---------- */
 .etapa-titulo { font-family: var(--font-display); font-size: 22px; font-weight: 600; margin: 0; }
 .etapa { gap: 14px; }
 .campo .erro:empty { display: none; }
