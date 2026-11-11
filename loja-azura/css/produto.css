@@ -1,8 +1,3 @@
-/* ==========================================================
-   produto.css – Página de detalhes do produto
-   ========================================================== */
-
-/* ---------- 7. Página do produto ---------- */
 .detalhe { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: start; margin-top: 16px; }
 .detalhe-foto { overflow: hidden; background: var(--soft); border: 0.83px solid var(--line); border-radius: var(--r-panel); box-shadow: var(--shadow-card); }
 .detalhe-foto img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
