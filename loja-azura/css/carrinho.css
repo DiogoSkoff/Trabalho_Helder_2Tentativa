@@ -1,8 +1,3 @@
-/* ==========================================================
-   carrinho.css – Carrinho de compras
-   ========================================================== */
-
-/* ---------- 8. Carrinho ---------- */
 .carrinho-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; align-items: start; margin-top: 16px; }
 .lista-carrinho { margin: 0; padding: 0; list-style: none; background: var(--surface); border: 0.83px solid var(--line); border-radius: var(--r-panel); box-shadow: var(--shadow-card); }
 .item-carrinho {
