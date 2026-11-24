@@ -1,5 +1,3 @@
-/* sucesso.js – mensagem de compra realizada com o resumo do pedido */
-
 const alvoConfirmacao = document.getElementById("confirmacao");
 const idPedido = new URLSearchParams(location.search).get("pedido");
 const todos = ler(CH.pedidos, []);
