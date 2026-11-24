@@ -1,13 +1,3 @@
-/* ==========================================================
-   app.js – funções usadas em todas as páginas
-   1. utilidades (formatação de valores, localStorage)
-   2. carrinho, cupom, frete e parcelamento
-   3. favoritos
-   4. cabeçalho, rodapé, avisos e cartão de produto
-   ========================================================== */
-
-/* ---------- 1. Utilidades ---------- */
-
 // chaves usadas no localStorage do navegador
 const CH = {
   carrinho: "azura_carrinho",
@@ -44,23 +34,21 @@ function escapar(s) {
   });
 }
 
-/* ---------- 2. Carrinho, cupom, frete e parcelamento ---------- */
-
 const LIMITE_POR_ITEM = 10;
 const FRETE_FIXO = 24.9;
-const FRETE_GRATIS_ACIMA = 2000;   // compras a partir deste valor têm frete grátis
-const DESCONTO_PIX = 0.05;         // 5% de desconto no PIX
+const FRETE_GRATIS_ACIMA = 2000;   // compras a partir = frete grátis
+const DESCONTO_PIX = 0.05;      
 const PARCELAS_SEM_JUROS = 6;
 const MAX_PARCELAS = 12;
 const PARCELA_MINIMA = 30;
-const JUROS_MENSAL = 0.0199;       // 1,99% ao mês a partir da 7ª parcela
+const JUROS_MENSAL = 0.0199;       // 1,99% ao mês a partir da 7 parcela
 
 const CUPONS = {
   AZURA10: { tipo: "percentual", valor: 10, texto: "10% de desconto na compra" },
   FRETEGRATIS: { tipo: "frete", texto: "Frete grátis" }
 };
 
-// o carrinho é uma lista de { id, qtd } guardada no navegador
+// o carrinho é uma lista de id
 function carrinho() { return ler(CH.carrinho, []); }
 
 function totalItens() {
@@ -121,7 +109,7 @@ function aplicarCupom(codigo) {
 
 function removerCupom() { gravar(CH.cupom, null); }
 
-// calcula todos os valores da compra. pagamento: "pix", "credito" ou "debito"
+// calcula todos os valores do pagamento
 function calcularTotais(pagamento) {
   const sub = subtotal();
   const codigo = cupomAtivo();
@@ -144,8 +132,6 @@ function parcelar(total, n) {
   return { n: n, valor: arred(comJuros / n), total: arred(comJuros), juros: true };
 }
 
-/* ---------- 3. Favoritos ---------- */
-
 function favoritos() { return ler(CH.favoritos, []); }
 
 function alternarFavorito(id) {
@@ -155,8 +141,6 @@ function alternarFavorito(id) {
   gravar(CH.favoritos, lista);
   return lista.indexOf(id) >= 0;
 }
-
-/* ---------- 4. Layout compartilhado ---------- */
 
 function atualizarBadge() {
   const n = totalItens();
@@ -236,7 +220,7 @@ function montarRodape() {
     "</div></footer>";
 }
 
-// monta o HTML de um cartão de produto (usado na home, na listagem e nos relacionados)
+// monta o HTML de um cartão de produto
 function cardProduto(p) {
   const fav = favoritos().indexOf(p.id) >= 0;
   const pct = p.precoAntigo ? Math.round((1 - p.preco / p.precoAntigo) * 100) : 0;
@@ -267,7 +251,7 @@ function cardProduto(p) {
   "</article>";
 }
 
-// cliques nos botões "Adicionar ao carrinho" e "Favoritar" funcionam em qualquer página
+// cliques nos botões Adicionar ao carrinho e Favoritar
 document.addEventListener("click", function (e) {
   const btnAdd = e.target.closest("[data-add]");
   if (btnAdd) {
