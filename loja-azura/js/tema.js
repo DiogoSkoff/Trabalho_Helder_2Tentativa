@@ -1,5 +1,3 @@
-/* tema.js – aplica o tema (claro/escuro) antes de a página aparecer.
-   Fica no <head> para evitar o "piscar" de cores ao carregar. */
 (function () {
   var tema = null;
   try { tema = localStorage.getItem("azura_tema"); } catch (e) {}
