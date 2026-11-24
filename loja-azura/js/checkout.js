@@ -1,15 +1,7 @@
-/* ==========================================================
-   checkout.js – finalização do pedido (simulação)
-   1. máscaras dos campos
-   2. validação do formulário
-   3. formas de pagamento: crédito (parcelado), débito e PIX
-   4. resumo do pedido e confirmação
-   ========================================================== */
-
 const formCheckout = document.getElementById("formCheckout");
 const itensDoPedido = itensCarrinho();
 
-// carrinho vazio: não há o que finalizar
+// carrinho vazio
 if (!itensDoPedido.length) {
   document.getElementById("checkoutLayout").hidden = true;
   document.getElementById("checkoutVazio").hidden = false;
@@ -23,7 +15,6 @@ function iniciarCheckout() {
     return '<option value="' + u + '">' + u + "</option>";
   }).join(""));
 
-  /* ---------- 1. Máscaras ---------- */
   function digitos(v) { return String(v).replace(/\D/g, ""); }
 
   const MASCARAS = {
@@ -58,7 +49,6 @@ function iniciarCheckout() {
     });
   });
 
-  /* ---------- 2. Validação ---------- */
   function validade(v) {
     const m = /^(\d{2})\/(\d{2})$/.exec(v);
     if (!m) return "Informe a validade no formato MM/AA.";
@@ -111,7 +101,6 @@ function iniciarCheckout() {
     if (e.target.id && document.getElementById("erro-" + e.target.id)) mostrarErro(e.target.id, "");
   });
 
-  /* ---------- 3. Formas de pagamento ---------- */
   const painelCartao = document.getElementById("painelCartao");
   const painelPix = document.getElementById("painelPix");
   const blocoParcelas = document.getElementById("blocoParcelas");
@@ -131,7 +120,7 @@ function iniciarCheckout() {
     selParcelas.value = selParcelas.querySelector('option[value="' + anterior + '"]') ? anterior : 1;
   }
 
-  // QR Code ilustrativo: padrão gerado a partir do valor (não é um QR real)
+  // QR Code
   function gerarQr(semente) {
     let h = 2166136261;
     for (let i = 0; i < semente.length; i++) { h ^= semente.charCodeAt(i); h = Math.imul(h, 16777619); }
@@ -180,7 +169,6 @@ function iniciarCheckout() {
     }
   });
 
-  /* ---------- 4. Resumo do pedido ---------- */
   function totaisDoPedido() {
     const tipo = pagamentoAtual();
     const t = calcularTotais(tipo);
@@ -228,7 +216,6 @@ function iniciarCheckout() {
     else if (e.target.id === "parcelas") atualizarResumo();
   });
 
-  /* ---------- Envio do pedido ---------- */
   formCheckout.addEventListener("submit", function (e) {
     e.preventDefault();
     const erros = validar();
@@ -240,7 +227,7 @@ function iniciarCheckout() {
     const botao = document.getElementById("btnConfirmar");
     botao.disabled = true;
     botao.textContent = "Processando pagamento…";
-    setTimeout(finalizarPedido, 1200); // simula o tempo de processamento
+    setTimeout(finalizarPedido, 1200); 
   });
 
   function finalizarPedido() {
@@ -277,7 +264,6 @@ function iniciarCheckout() {
     location.href = "sucesso.html?pedido=" + encodeURIComponent(pedido.id);
   }
 
-  // se a pessoa voltar para esta página pelo navegador, o botão não fica travado
   window.addEventListener("pageshow", function (ev) {
     if (ev.persisted) {
       const b = document.getElementById("btnConfirmar");
