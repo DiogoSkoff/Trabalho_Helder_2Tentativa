@@ -1,11 +1,5 @@
-/* ==========================================================
-   carrinho.js – tela do carrinho
-   Mostra os itens, permite alterar a quantidade, remover,
-   aplicar cupom e calcula subtotal, frete e total.
-   ========================================================== */
-
 const raiz = document.getElementById("carrinhoConteudo");
-let mensagemCupom = null; // { tipo: "ok" | "erro", texto: "..." }
+let mensagemCupom = null;
 
 function linhaItem(item) {
   const p = item.produto;
