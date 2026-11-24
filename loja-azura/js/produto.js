@@ -1,11 +1,9 @@
-/* produto.js – página de detalhes de um produto (produto.html?id=1) */
-
 const idProduto = Number(new URLSearchParams(location.search).get("id"));
 const prod = produtoPorId(idProduto);
 const alvoProduto = document.getElementById("produto");
 
 if (!prod) {
-  // id inválido ou ausente na URL
+  // id invalido
   document.title = "Produto não encontrado – Azura";
   alvoProduto.innerHTML =
     '<div class="vazio"><h2>Produto não encontrado</h2>' +
@@ -80,7 +78,7 @@ if (!prod) {
     location.href = "carrinho.html";
   });
 
-  // produtos relacionados: mesma categoria; se faltar, completa com os mais bem avaliados
+  // produtos relacionados
   let rel = PRODUTOS.filter(function (p) { return p.categoria === prod.categoria && p.id !== prod.id; });
   if (rel.length < 4) {
     const extras = PRODUTOS
