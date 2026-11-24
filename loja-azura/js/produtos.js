@@ -1,9 +1,3 @@
-/* ==========================================================
-   produtos.js – listagem com busca, filtros e ordenação
-   Fluxo: o objeto "estado" guarda os filtros escolhidos;
-   toda vez que algo muda, a função renderizar() refaz a lista.
-   ========================================================== */
-
 const params = new URLSearchParams(location.search);
 
 const estado = {
@@ -34,7 +28,6 @@ const NOTAS = [
 
 const form = document.getElementById("filtros");
 
-/* ---------- monta o painel de filtros ---------- */
 function opcoesRadio(nome, lista, atual) {
   return lista.map(function (i) {
     return '<label class="opt"><input type="radio" name="' + nome + '" value="' + i.id + '"' + (i.id === atual ? " checked" : "") + ">" + i.rotulo + "</label>";
@@ -69,7 +62,6 @@ function montarFiltros() {
     '<button class="btn-ghost full" type="button" id="limpar">Limpar filtros</button>';
 }
 
-/* ---------- aplica os filtros ---------- */
 function passaNosFiltros(p) {
   if (estado.cat !== "todas" && p.categoria !== estado.cat) return false;
   const faixa = FAIXAS.find(function (f) { return f.id === estado.preco; });
@@ -143,7 +135,6 @@ function limparTudo() {
   renderizar();
 }
 
-/* ---------- eventos ---------- */
 form.addEventListener("change", function () {
   const f = form.elements;
   const mudouCategoria = f.cat.value !== estado.cat;
@@ -188,7 +179,6 @@ document.addEventListener("click", function (e) {
   renderizar();
 });
 
-// no computador os filtros ficam sempre abertos; no celular ficam recolhidos
 const caixa = document.getElementById("filtrosBox");
 if (window.matchMedia) {
   const largo = window.matchMedia("(min-width: 861px)");
